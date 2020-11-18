@@ -1,5 +1,6 @@
 from question_model import Question
 from data import question_data
+from quiz_brain import QuizBrain
 
 question_bank = []
 
@@ -9,8 +10,12 @@ for question in question_data:
     new_question = Question(q_text=question_text, q_answer=question_answer)
     question_bank.append(new_question)
 
-print(question_bank)
+print(question_bank[0].answer)
 
+quiz = QuizBrain(question_bank)
+
+while quiz.still_has_questions():
+    quiz.next_question()
 
 # class User:
 #     def __init__(self, user_id, username):
@@ -35,4 +40,3 @@ print(question_bank)
 # print(user_1.following)
 # print(f"user 2 has {user_2.followers} followers")
 # print(user_2.following)
-
